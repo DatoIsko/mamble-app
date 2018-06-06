@@ -1,0 +1,6 @@
+<div class="piano">
+  <div *ngFor="let pianoKey of pianoKeys" class="piano-key">
+    <div class="piano-key__white" (click)="keyPress(pianoKey.whiteKeyId)" data-key="74" data-note="2C"></div>
+    <div *ngIf="pianoKey.blackKeyId" class="piano-key__black" (click)="keyPress(pianoKey.blackKeyId)" data-key="73" data-note="2Cs"></div>
+  </div>
+</div>

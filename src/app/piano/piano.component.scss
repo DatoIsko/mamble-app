@@ -1,0 +1,118 @@
+
+$gray-darker: #282828;
+$gray-dark: #333;
+$gray: #666;
+$gray-medium: #aaa;
+$gray-light: #c8c8c8;
+$gray-lighter: #dedede;
+$gray-white: #fafafa;
+$white: #fff;
+
+$yellow: #eade00;
+$blue: #0291A7;
+$blue-light: #aceff9;
+$red: #cc0000;
+$green: #afcc49;
+
+// -------------------------------------------------
+// 2. Spaces
+// --------------------------------------------------
+
+$space-xxs: .4rem;               // Smallest space margin
+$space-xs: .8rem;              // Extra small space margin
+$space-sm: 1.6rem;             // Small space margin
+$space: 2.4rem;            // Regular space margin
+$space-md: 3.2rem;           // Medium space margin
+$space-lg: 4.8rem;          // Large space margin
+$space-xlg: 6.4rem;         // Extra Large space margin
+$space-xxlg: 8.8rem;        // Extra Large space margin  
+
+$piano-height: 60vh;
+$footer-height: 4rem;
+
+// --------------------------------------------------
+// 3. Media Queries
+// --------------------------------------------------
+
+$screen-xxs: 380px;  // xExtra small screen / phone
+$screen-xs: 440px;  // Extra small screen / phone
+$screen-sm: 768px;  // Small screen / tablet
+$screen-md: 992px;  // Medium screen / desktop
+$screen-lg: 1200px; // Large screen / wide desktop
+$screen-xlg: 1400px; // Extra Large screen / wide desktop
+$screen-xxlg: 1600px; // Extra Large screen / wide desktop
+
+// // Rupture Settings
+// // @stylint off
+// rupture.mobile-cutoff: $screen-sm;
+// rupture.tablet-cutoff  = $screen-md
+// rupture.desktop-cutoff = $screen-lg
+// rupture.hd-cutoff      = $screen-xlg
+
+// rupture.scale          = 0 $screen-xxs $screen-sm $screen-md $screen-lg $screen-xlg $screen-xxlg
+// rupture.scale-names    = 'xxs' 'xs' 'sm' 'md' 'lg' 'xlg' 'hd'
+// rupture.anti-overlap   = -1px
+// @stylint on
+
+// --------------------------------------------------
+// 4. zIndex
+// --------------------------------------------------
+ 
+$zindex-piano: 1;
+$zindex-site: 10;
+
+.piano{
+  background: linear-gradient(-65deg, #000, #222, #000, #666, #222 75%);
+  background-color: #663399;
+  border-top: $space-xs $gray-darker solid;
+  box-shadow: inset 0 -1px 1px rgba($white, .5), inset 0 -($space-xxs) $space-xxs $gray-darker;
+  display: flex;
+  height: 80vh;
+  justify-content: center;
+  overflow: hidden;
+  padding-bottom: 5%;
+  padding-left: 2.5%;
+  padding-right: 2.5%;
+
+  &-key{
+    flex: 1;
+    margin: 0 ($space-xxs / 4);
+    max-width: $space-xxlg;
+    position: relative;
+
+    &__white{
+      background: linear-gradient(-30deg, #f8f8f8, #fff);
+      box-shadow: inset 0 1px 0px rgba(255,255,255, 1),inset 0 -1px 0px rgba(255,255,255, 1),inset 1px 0px 0px rgba(255,255,255, 1),inset -1px 0px 0px rgba(255,255,255, 1),0 4px 3px rgba(0,0,0,.7),inset 0 -1px 0px rgba(255,255,255, 1),inset 1px 0px 0px rgba(255,255,255, 1),inset -1px -1px 15px rgba(0,0,0, .5), -3px 4px 6px rgba(0,0,0, .5);
+      height: 100%; 
+      position: relative;
+      
+      &:active,
+      &.active{
+        box-shadow: inset 0 1px 0px rgba(255,255,255, 1),inset 0 -1px 0px rgba(255,255,255, 1),inset 1px 0px 0px rgba(255,255,255, 1),inset -1px 0px 0px rgba(255,255,255, 1),0 4px 3px rgba(0,0,0,.7),inset 0 -1px 0px rgba(255,255,255, 1),inset 1px 0px 0px rgba(255,255,255, 1),inset -1px -1px 15px rgba(0,0,0, 1), -3px 4px 6px rgba(0,0,0, .5);
+        height: calc(100% - $space-xxs);
+        position: relative;
+        top: -($space-xxs);
+      }
+         
+    }
+    &__black{
+      background: linear-gradient(-20deg,#222,#000,#222);
+      box-shadow: inset 0px -1px 2px rgba(255,255,255,.4),0 2px 3px rgba(0,0,0,.4);
+      border-width: ($space-xxs / 2) $space-xxs ($space-xs + $space-xxs);
+      border-style: solid;
+      border-color: #666 #222 #111 #555;
+      height: 60%;
+      left: 100%;
+      position: absolute;
+      transform: translateX(-50%);
+      top: 0;
+      width: 70%;
+      z-index: $zindex-piano;
+    
+      &:active,
+      &.active{
+        border-bottom-width: $space-xxs;   
+      }
+    }      
+  }
+}

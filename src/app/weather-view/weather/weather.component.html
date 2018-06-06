@@ -1,0 +1,63 @@
+<div style="width: 50%;">
+  <div class="form-group">
+    <input type="text" #cityModel [(ngModel)]="city" style="float: left;" />
+    <div class="button-holder">
+      <label>Celsius</label>
+      <input type="radio" name="type" [(ngModel)]="type" value="celsius" class="regular-radio big-radio" />
+      <label>Farenheit</label>
+      <input type="radio" name="type" [(ngModel)]="type" value="farenheit" class="regular-radio big-radio" />
+    </div>
+    <label>Check for extended</label>
+    <input type="checkbox" [(ngModel)]="extended" class="regular-checkbox big-checkbox" />
+    <button class="button" [disabled]="!city" (click)="update(cityModel.value)">Update</button>
+  </div>
+</div>
+<div class="container-fluid">
+  <div class="container mt-10">
+    <div id='card' class="card" [ngClass]="{ 'day': isDay, 'night': !isDay, 'rainy': forecast==='rainy' , 'stormday': forecast==='stormday'}">
+      <div id='temp' class="text" [ngClass]="{'celsius': units === 'metric', 'farenheit': units === 'imperial'}">{{weather?.main?.temp}}</div>
+      <div id='cloudy' class="cloudy">
+        <div class="cloud">
+          <div class="sol" [ngClass]="{'moon': !isDay}">
+          </div>
+        </div>
+      </div>
+      <div id='clear' class="clear">
+        <div class="sol" [ngClass]="{'moon': !isDay}"></div>
+      </div>
+      <div id='rainy' class="rainy">
+        <div class="cloud">
+          <div class="rain"></div>
+          <div class="rain"></div>
+          <div class="rain"></div>
+          <div class="rain"></div>
+        </div>
+      </div>
+      <div id='storm' class="storm">
+        <div class="cloud">
+          <div class="rain"></div>
+          <div class="rain"></div>
+          <div class="rain"></div>
+          <div class="rain"></div>
+        </div>
+      </div>
+      <div id="haze" class="haze" [ngClass]="{'show': forcast === 'haze'}">
+        <div class="cloud"></div>
+      </div>
+    </div>
+    <div id='city' class="city">{{weather?.name}}, {{weather?.sys?.country}}</div>
+  </div>
+  <div  class="extended" *ngIf="extended">
+    <h3>
+      <b>City:</b> {{weather?.name}}</h3>
+    <p>
+      <b>Type:</b> {{type}}</p>
+    <p>Longitude: {{weather?.coord?.lon}}</p>
+    <p>Latitude: {{weather?.coord?.lat}}</p>
+    <p>Temp: {{weather?.main?.temp}}</p>
+    <p>tempMax: {{weather?.main?.temp_max}}</p>
+    <p>tempMin: {{weather?.main?.temp_min}}</p>
+    <p>The weather description: {{(weather && weather.weather && weather.weather.length) ? weather.weather[0].description: ''}}</p>
+    <p>humidity: {{weather?.main?.humidity}}</p>
+  </div>
+</div>
